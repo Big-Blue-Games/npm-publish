@@ -27,7 +27,10 @@ export async function setNpmConfig(options: NormalizedOptions): Promise<void> {
  * Updates the given NPM config with the specified options.
  */
 function updateConfig(config: string, { registry, debug }: NormalizedOptions): string {
-  let authDomain = registry.origin.slice(registry.protocol.length);
+  //let authDomain = registry.origin.slice(registry.protocol.length);
+  let authDomain = registry.href.slice(registry.protocol.length);
+  if (!authDomain.endsWith("/"))
+    authDomain += "/";
 
   let lines = config.split(/\r?\n/);
 
