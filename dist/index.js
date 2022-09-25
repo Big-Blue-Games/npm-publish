@@ -1097,6 +1097,9 @@ exports.npm = {
             if (options.dryRun) {
                 command.push("--dry-run");
             }
+            if (options.registry) {
+                command.push("--registry", options.registry.toString());
+            }
             // Run "npm publish" in the package.json directory
             let cwd = (0, path_1.resolve)((0, path_1.dirname)(options.package));
             // Determine whether to suppress NPM's output
